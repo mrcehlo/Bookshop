@@ -13,10 +13,6 @@ class Book extends Component {
 
   }
 
-  async componentDidMount() {
-
-   }
-
   render() {
     return (
       <div>
@@ -37,7 +33,7 @@ class Book extends Component {
            </Typography>
          </CardContent>
          <CardActions>
-           <Button size="small">View more</Button>
+           <Button href={`/books/${this.state.isbn}`} size="small">View more</Button>
          </CardActions>
        </Card>
      </div>
