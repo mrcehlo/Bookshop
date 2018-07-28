@@ -1,4 +1,6 @@
 
-export apiConnection {
-  "url": "http://localhost:50495/"
+export default {
+  apiConnection: {
+    url: "http://localhost:50495/api"
+  }
 };
