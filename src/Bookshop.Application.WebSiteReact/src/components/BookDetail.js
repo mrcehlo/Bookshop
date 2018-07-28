@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import {getSingleBook} from '../libs/BookshopAPI';
+import {getSingleBook, updateBook, deleteBook} from '../libs/BookshopAPI';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -48,9 +48,11 @@ class BookDetail extends Component {
     return getSingleBook(isbn);
   }
 
-  handleChange(event) {
-   this.setState({[event.target.id]: event.target.value});
- }
+  handleChange = event => {
+          this.setState({
+              [event.target.id]: event.target.value
+          });
+      }
 
   async componentDidMount() {
        try {
@@ -65,6 +67,47 @@ class BookDetail extends Component {
        this.setState({ isLoading: false });
    }
 
+   removeBook(){
+     return deleteBook(this.state.match.params.isbn);
+   }
+   saveBook(book) {
+        return updateBook(book);
+    }
+
+   handleSave = async event => {
+       event.preventDefault();
+
+       this.setState({ isLoading: true });
+
+       this.saveBook({
+           title: this.state.title,
+           author: this.state.author,
+           publisher: this.state.publisher,
+           isbn: this.state.isbn,
+           quantity: this.state.quantity,
+           price: this.state.price,
+           bookShelfLocalization: this.state.bookShelfLocalization
+       })
+           .then(res => {
+               this.props.history.push("/books");
+           })
+           .catch(err => {
+               this.setState({ isLoading: false });
+                   alert(err);
+           });
+   }
+
+   handleDelete = async event => {
+        event.preventDefault();
+
+        try {
+            await this.removeBook();
+            this.props.history.push("/books");
+        } catch (e) {
+            alert(e);
+        }
+    }
+
   render() {
     const { classes } = this.props;
 
@@ -73,10 +116,10 @@ class BookDetail extends Component {
       <Grid container justify="center" spacing={24}>
         <Grid item xs={5} sm={6} m={9}>
 
-          <form className={classes.container} noValidate autoComplete="off">
+          <form className={classes.container} onSubmit={this.handleSave} noValidate autoComplete="off">
             <TextField
               id="title"
-              placeHolder="Title"
+              placeholder="Title"
               className={classes.textField}
               value={this.state.title}
               margin="normal"
@@ -84,7 +127,7 @@ class BookDetail extends Component {
             />
             <TextField
               id="author"
-              placeHolder="Author name"
+              placeholder="Author name"
               className={classes.textField}
               value={this.state.author}
               margin="normal"
@@ -92,7 +135,7 @@ class BookDetail extends Component {
             />
             <TextField
               id="publisher"
-              placeHolder="Publisher"
+              placeholder="Publisher"
               className={classes.textField}
               value={this.state.publisher}
               margin="normal"
@@ -100,7 +143,7 @@ class BookDetail extends Component {
             />
             <TextField
               id="quantity"
-              placeHolder="Quantity"
+              placeholder="Quantity"
               className={classes.textField}
               type="number"
               value={this.state.quantity}
@@ -109,7 +152,7 @@ class BookDetail extends Component {
             />
             <TextField
               id="price"
-              placeHolder="Price"
+              placeholder="Price"
               className={classes.textField}
               type="number"
               value={this.state.price}
@@ -118,20 +161,20 @@ class BookDetail extends Component {
             />
             <TextField
               id="bookShelfLocalization"
-              placeHolder="Localization on bookshelf"
+              placeholder="Localization on bookshelf"
               className={classes.textField}
               value={this.state.bookShelfLocalization}
               margin="normal"
               onChange={this.handleChange}
             />
             <div>
-              <Button variant="contained" color="secondary" className={classes.button}>
-                Delete
-                <DeleteIcon className={classes.rightIcon} />
-              </Button>
-              <Button variant="contained" color="primary" className={classes.button}>
+              <Button type="submit" variant="contained" color="primary" className={classes.button}>
                 Save
                 <Icon className={classes.rightIcon}>send</Icon>
+              </Button>
+              <Button onClick={this.handleDelete} variant="contained" color="secondary" className={classes.button}>
+                Delete
+                <DeleteIcon className={classes.rightIcon} />
               </Button>
             </div>
           </form>
@@ -140,9 +183,5 @@ class BookDetail extends Component {
     );
   }
 }
-
-TextField.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(BookDetail);

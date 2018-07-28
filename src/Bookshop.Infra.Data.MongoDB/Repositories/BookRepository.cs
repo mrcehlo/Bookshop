@@ -44,7 +44,11 @@ namespace Bookshop.Infra.Data.MongoDB.Repositories
 
         public Book Update(Book _Book)
         {
-            _DBContext.GetCollection().ReplaceOne(x => x.Id == _Book.Id, _Book);
+            // in order to avoid updating mongodb Id property
+            var savedBook = GetByParams(_Book);
+            _Book.Id = savedBook.Id;
+
+            _DBContext.GetCollection().ReplaceOne(x => x.ISBN == _Book.ISBN, _Book);
             return _Book;
         }
     }

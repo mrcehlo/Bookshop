@@ -16,3 +16,7 @@ export async function createBook(book) {
 export async function updateBook(book) {
     return axios.put(`${appConfig.apiConnection.url}/books`, book);
 }
+
+export async function deleteBook(isbn) {
+    return axios.delete(`${appConfig.apiConnection.url}/books/${isbn}`);
+}
