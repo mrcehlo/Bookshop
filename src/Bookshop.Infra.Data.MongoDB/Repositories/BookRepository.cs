@@ -31,8 +31,8 @@ namespace Bookshop.Infra.Data.MongoDB.Repositories
         {
             return (Book)_DBContext.GetCollection().Find(x =>
             (
-                x == _Book || x.Title == _Book.Title || x.Publisher == _Book.Publisher ||
-                x.Author == _Book.Author || x.ISBN == _Book.ISBN
+                x.ISBN == _Book.ISBN || x.Title == _Book.Title || x.Publisher == _Book.Publisher ||
+                x.Author == _Book.Author
             )).FirstOrDefault();
         }
 

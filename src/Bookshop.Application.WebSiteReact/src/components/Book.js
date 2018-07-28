@@ -4,6 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
 
 class Book extends Component {
   constructor(props) {
@@ -33,7 +34,9 @@ class Book extends Component {
            </Typography>
          </CardContent>
          <CardActions>
-           <Button href={`/books/${this.state.isbn}`} size="small">View more</Button>
+            <Link to={`/series/${this.state.isbn}`}>
+              <Button size="small">View more</Button>
+            </Link>
          </CardActions>
        </Card>
      </div>

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import TopBar from './components/TopBar';
-import Book from './components/Book';
-import {getAllBooks} from './libs/BookshopAPI';
-import { Link, withRouter } from "react-router-dom";
-import Routes from "./Routes";
+import Book from './Book';
+import {getAllBooks} from '../libs/BookshopAPI';
+import { Link } from "react-router-dom";
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -41,17 +38,18 @@ class App extends Component {
 
   render() {
     return (
+      <Grid container justify="center" spacing={24}>
+        <Grid item xs={5} sm={6} m={9}>
+          <p>
+            [work in progress]
+          </p>
 
-          <div className="App">
-            <Grid container justify="center" spacing={24}>
-                <Grid item xs={12}>
-                  <TopBar />
-                </Grid>
-            </Grid>
-            <Routes />
-          </div>
+          {!this.state.isLoading && this.renderBookList(this.state.books)}
+
+        </Grid>
+      </Grid>
     );
   }
 }
 
-export default withRouter(App);
+export default Home;

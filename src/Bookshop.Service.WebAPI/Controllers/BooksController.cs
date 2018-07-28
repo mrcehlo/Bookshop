@@ -31,6 +31,14 @@ namespace Bookshop.Service.WebAPI.Controllers
             return Ok(_mapper.Map<IEnumerable<BookViewModel>>(books));
         }
 
+        [HttpGet("{isbn}")]
+        public IActionResult Get(string isbn)
+        {
+            var bookISBN = new BookViewModel() { ISBN = isbn };
+            var bookFull = _service.GetByParams(_mapper.Map<Book>(bookISBN));
+            return Ok(_mapper.Map<BookViewModel>(bookFull));
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] BookViewModel bookViewModel)
         {
