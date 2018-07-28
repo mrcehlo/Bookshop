@@ -23,19 +23,12 @@ class App extends Component {
   async componentDidMount() {
        try {
         const books = this.returnBooks().then(books => this.setState({books}));
-        
+
        } catch (e) {
            alert(e);
        }
        this.setState({ isLoading: false });
    }
-
-  logReturn(books){
-     [].concat(books).map(
-        (book, i) =>
-        console.log(book)
-      )
-  }
 
   renderBookList(books){
     return [].concat(books).map(
