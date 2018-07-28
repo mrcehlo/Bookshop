@@ -40,7 +40,9 @@ class BookDetail extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {isLoading: true, ...props};
+    this.state = {isLoading: true,
+                  isNewBook: false,
+                  ...props};
 
   }
 
@@ -57,9 +59,22 @@ class BookDetail extends Component {
   async componentDidMount() {
        try {
 
-        this.getCurrentBook(this.state.match.params.isbn).then(book => this.setState({...book}));
-
-        console.log(this.state);
+        // Validates if the page was open from the "add" buttom on HomeIcon
+        if(this.state.match.params.isbn !== "new"){
+          this.getCurrentBook(this.state.match.params.isbn).then(book => this.setState({...book}));
+        }
+        else {
+          const book = {
+            "isbn": "",
+            "title": "",
+            "author": "",
+            "publisher": "",
+            "price": 0,
+            "bookShelfLocalization": "",
+            "quantity": 0
+          }
+          this.setState({isNewBook: true, ...book});
+        }
 
        } catch (e) {
            alert(e);
@@ -107,6 +122,19 @@ class BookDetail extends Component {
             alert(e);
         }
     }
+
+  returnHideElementStyle(isNewBook, classes){
+     if(!isNewBook)
+     {
+       return (
+         <Button onClick={this.handleDelete} variant="contained" color="secondary" className={classes.button}>
+           Delete
+           <DeleteIcon className={classes.rightIcon} />
+         </Button>
+       )
+     }
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -172,10 +200,7 @@ class BookDetail extends Component {
                 Save
                 <Icon className={classes.rightIcon}>send</Icon>
               </Button>
-              <Button onClick={this.handleDelete} variant="contained" color="secondary" className={classes.button}>
-                Delete
-                <DeleteIcon className={classes.rightIcon} />
-              </Button>
+              {this.returnHideElementStyle(this.state.isNewBook, classes)}
             </div>
           </form>
         </Grid>

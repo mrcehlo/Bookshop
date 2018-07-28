@@ -51,7 +51,7 @@ class Home extends Component {
 
           <div class="buttonAddContainer">
             <Button variant="fab" color="primary" aria-label="Add" className="button buttonAdd">
-              <AddIcon />
+              <Link to="/books/new"> <AddIcon /> </Link>
             </Button>
           </div>
 
