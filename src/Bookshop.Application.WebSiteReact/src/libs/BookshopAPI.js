@@ -6,7 +6,7 @@ export async function getAllBooks() {
 }
 
 export async function getSingleBook(isbn) {
-    return (await axios.get(`${{appConfig.apiConnection.url}/books/{isbn}}`)).data;
+    return (await axios.get(`${appConfig.apiConnection.url}/books/${isbn}`)).data;
 }
 
 export async function createBook(book) {

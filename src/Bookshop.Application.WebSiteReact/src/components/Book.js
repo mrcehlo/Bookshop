@@ -34,7 +34,7 @@ class Book extends Component {
            </Typography>
          </CardContent>
          <CardActions>
-            <Link to={`/series/${this.state.isbn}`}>
+            <Link to={`/books/${this.state.isbn}`}>
               <Button size="small">View more</Button>
             </Link>
          </CardActions>
