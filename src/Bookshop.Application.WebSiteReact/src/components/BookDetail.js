@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import {getSingleBook, updateBook, deleteBook} from '../libs/BookshopAPI';
+import {getSingleBook, updateBook, deleteBook, createBook} from '../libs/BookshopAPI';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
+import './BookDetail.css'
 
 const styles = theme => ({
   container: {
@@ -85,8 +86,13 @@ class BookDetail extends Component {
    removeBook(){
      return deleteBook(this.state.match.params.isbn);
    }
-   saveBook(book) {
-        return updateBook(book);
+   saveBook(book, isNewBook) {
+        if(isNewBook){
+          return createBook(book);
+        }
+        else{
+          return updateBook(book);
+        }
     }
 
    handleSave = async event => {
@@ -102,7 +108,7 @@ class BookDetail extends Component {
            quantity: this.state.quantity,
            price: this.state.price,
            bookShelfLocalization: this.state.bookShelfLocalization
-       })
+       }, this.state.isNewBook)
            .then(res => {
                this.props.history.push("/books");
            })
@@ -195,13 +201,23 @@ class BookDetail extends Component {
               margin="normal"
               onChange={this.handleChange}
             />
-            <div>
+            <TextField
+              id="isbn"
+              placeholder="ISBN identifier"
+              className={classes.textField}
+              value={this.state.isbn}
+              margin="normal"
+              onChange={this.handleChange}
+            />
+
+            <div className="buttomWrapper">
               <Button type="submit" variant="contained" color="primary" className={classes.button}>
                 Save
                 <Icon className={classes.rightIcon}>send</Icon>
               </Button>
               {this.returnHideElementStyle(this.state.isNewBook, classes)}
             </div>
+
           </form>
         </Grid>
       </Grid>

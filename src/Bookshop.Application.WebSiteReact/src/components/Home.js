@@ -49,7 +49,7 @@ class Home extends Component {
 
           {!this.state.isLoading && this.renderBookList(this.state.books)}
 
-          <div class="buttonAddContainer">
+          <div className="buttonAddContainer">
             <Button variant="fab" color="primary" aria-label="Add" className="button buttonAdd">
               <Link to="/books/new"> <AddIcon /> </Link>
             </Button>
