@@ -3,6 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import Book from './Book';
 import {getAllBooks} from '../libs/BookshopAPI';
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import "./Home.css";
 
 class Home extends Component {
   constructor(props) {
@@ -45,6 +48,12 @@ class Home extends Component {
           </p>
 
           {!this.state.isLoading && this.renderBookList(this.state.books)}
+
+          <div class="buttonAddContainer">
+            <Button variant="fab" color="primary" aria-label="Add" className="button buttonAdd">
+              <AddIcon />
+            </Button>
+          </div>
 
         </Grid>
       </Grid>
