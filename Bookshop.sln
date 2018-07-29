@@ -13,15 +13,40 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infra", "3-Infra", "{1AC0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-CrossCutting", "4-CrossCutting", "{AF3120C3-87ED-4796-9794-53F8A7D4847C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshop.Service.WebAPI", "src\Bookshop.Service.WebAPI\Bookshop.Service.WebAPI.csproj", "{C3BA533E-FEE4-4A5C-A764-BC68E0B9E2A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshop.Service.WebAPI", "src\Bookshop.Service.WebAPI\Bookshop.Service.WebAPI.csproj", "{C3BA533E-FEE4-4A5C-A764-BC68E0B9E2A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshop.Domain", "src\Bookshop.Domain\Bookshop.Domain.csproj", "{90439978-3493-4345-B4B1-092EF8666D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshop.Domain", "src\Bookshop.Domain\Bookshop.Domain.csproj", "{90439978-3493-4345-B4B1-092EF8666D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshop.Infra.Data.MongoDB", "src\Bookshop.Infra.Data.MongoDB\Bookshop.Infra.Data.MongoDB.csproj", "{5A88BA33-36A7-4536-BC4B-B55A325FCBCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshop.Infra.Data.MongoDB", "src\Bookshop.Infra.Data.MongoDB\Bookshop.Infra.Data.MongoDB.csproj", "{5A88BA33-36A7-4536-BC4B-B55A325FCBCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshop.CrossCutting.IoC", "src\Bookshop.CrossCutting.IoC\Bookshop.CrossCutting.IoC.csproj", "{198EAB7E-F256-4B32-8FB7-88754E19E837}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshop.CrossCutting.IoC", "src\Bookshop.CrossCutting.IoC\Bookshop.CrossCutting.IoC.csproj", "{198EAB7E-F256-4B32-8FB7-88754E19E837}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshop.Infra.Data", "src\Bookshop.Infra.Data\Bookshop.Infra.Data.csproj", "{573718DA-4F0E-4001-B00D-5AC8394B05E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshop.Infra.Data", "src\Bookshop.Infra.Data\Bookshop.Infra.Data.csproj", "{573718DA-4F0E-4001-B00D-5AC8394B05E1}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Bookshop.Application.WebSiteReact", "src\Bookshop.Application.WebSiteReact\", "{79618AC7-DE9A-4C56-AAB2-D499E013A86A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_55902"
+		Debug.AspNetCompiler.PhysicalPath = "src\Bookshop.Application.WebSiteReact\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55902\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_55902"
+		Release.AspNetCompiler.PhysicalPath = "src\Bookshop.Application.WebSiteReact\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55902\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "55902"
+		SlnRelativePath = "src\Bookshop.Application.WebSiteReact\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{31AEF95E-F63D-4651-B98B-5C371BC95B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshop.Domain.Tests", "tests\Bookshop.Domain.Tests\Bookshop.Domain.Tests.csproj", "{4432D6DB-8071-4A1A-9410-184EEBD62631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +74,14 @@ Global
 		{573718DA-4F0E-4001-B00D-5AC8394B05E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{573718DA-4F0E-4001-B00D-5AC8394B05E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{573718DA-4F0E-4001-B00D-5AC8394B05E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79618AC7-DE9A-4C56-AAB2-D499E013A86A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79618AC7-DE9A-4C56-AAB2-D499E013A86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79618AC7-DE9A-4C56-AAB2-D499E013A86A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{79618AC7-DE9A-4C56-AAB2-D499E013A86A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{4432D6DB-8071-4A1A-9410-184EEBD62631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4432D6DB-8071-4A1A-9410-184EEBD62631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4432D6DB-8071-4A1A-9410-184EEBD62631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4432D6DB-8071-4A1A-9410-184EEBD62631}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +92,8 @@ Global
 		{5A88BA33-36A7-4536-BC4B-B55A325FCBCE} = {1AC00530-237F-4517-B6A2-DC39FBED7310}
 		{198EAB7E-F256-4B32-8FB7-88754E19E837} = {AF3120C3-87ED-4796-9794-53F8A7D4847C}
 		{573718DA-4F0E-4001-B00D-5AC8394B05E1} = {1AC00530-237F-4517-B6A2-DC39FBED7310}
+		{79618AC7-DE9A-4C56-AAB2-D499E013A86A} = {2171D283-D367-46AC-BC6B-7BB48331EAFA}
+		{4432D6DB-8071-4A1A-9410-184EEBD62631} = {31AEF95E-F63D-4651-B98B-5C371BC95B24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B37CC7E-4853-4E4B-8955-4E24648D8DAA}

@@ -6,4 +6,5 @@
 .buttonAddContainer {
   text-align: right;
   overflow-y: visible;
+  position: relative;
 }
