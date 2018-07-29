@@ -46,6 +46,15 @@ $ npm start
 ```
 to finally start the application!
 
+### Exploring the API 
+
+If you wanna test any method exposed by the API, you should do it by using the Swagger interactive documentation.
+Just navigate to
+```
+htpp://<server>/swagger/#/api/books
+```
+and explore it, as simple as that.
+
 ## Built With
 
 * [.NET Core](https://github.com/dotnet/core) - .NET Core is a cross-platform version of .NET for building websites, services, and console apps.
@@ -53,6 +62,7 @@ to finally start the application!
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
 * [Material-UI](https://material-ui.com/) - React components that implement Google's Material Design.
 * [Visual Studio Community 2017](https://visualstudio.microsoft.com/pt-br/downloads/?rr=https%3A%2F%2Fwww.google.com.br%2F) - The usual Visual Studio, community version.
+* [Swagger](https://swagger.io/) - The Best APIs are Built with Swagger Tools.
 
 ## Authors
 
