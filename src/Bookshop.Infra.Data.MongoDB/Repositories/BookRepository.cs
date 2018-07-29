@@ -2,54 +2,52 @@
 using Bookshop.Domain.Interfaces.Repository;
 using Bookshop.Infra.Data.Interfaces;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Bookshop.Infra.Data.MongoDB.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        private readonly MongoDBContext<Book> _DBContext;
+        private readonly MongoDBContext<Book> _dbContext;
 
-        public BookRepository(IDBContext<Book> _DBContextBook)
+        public BookRepository(IDBContext<Book> dbContextBook)
         {
-            _DBContext = (MongoDBContext<Book>)_DBContextBook;
+            _dbContext = (MongoDBContext<Book>)dbContextBook;
         }
 
-        public void Add(Book _Book)
+        public void Add(Book book)
         {
-            _DBContext.GetCollection().InsertOne(_Book);
+            _dbContext.GetCollection().InsertOne(book);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return _DBContext.GetCollection().AsQueryable();
+            return _dbContext.GetCollection().AsQueryable();
         }
 
-        public Book GetByParams(Book _Book)
+        public Book GetByParams(Book book)
         {
-            return (Book)_DBContext.GetCollection().Find(x =>
+            return (Book)_dbContext.GetCollection().Find(x =>
             (
-                x.ISBN == _Book.ISBN || x.Title == _Book.Title || x.Publisher == _Book.Publisher ||
-                x.Author == _Book.Author
+                x.ISBN == book.ISBN || x.Title == book.Title || x.Publisher == book.Publisher ||
+                x.Author == book.Author
             )).FirstOrDefault();
         }
 
-        public int Remove(Book _Book)
+        public int Remove(Book book)
         {
-            var vResult = _DBContext.GetCollection().DeleteOne(x => (x.ISBN == _Book.ISBN));
+            var vResult = _dbContext.GetCollection().DeleteOne(x => (x.ISBN == book.ISBN));
             return vResult.IsAcknowledged ? (int)vResult.DeletedCount : -1;
         }
 
-        public Book Update(Book _Book)
+        public Book Update(Book book)
         {
             // in order to avoid updating mongodb Id property
-            var savedBook = GetByParams(_Book);
-            _Book.Id = savedBook.Id;
+            var savedBook = GetByParams(book);
+            book.Id = savedBook.Id;
 
-            _DBContext.GetCollection().ReplaceOne(x => x.ISBN == _Book.ISBN, _Book);
-            return _Book;
+            _dbContext.GetCollection().ReplaceOne(x => x.ISBN == book.ISBN, book);
+            return book;
         }
     }
 }

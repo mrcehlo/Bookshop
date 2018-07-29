@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Bookshop.Service.WebAPI.ViewModels
+﻿namespace Bookshop.Service.WebAPI.ViewModels
 {
     public class BookViewModel
     {

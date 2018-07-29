@@ -1,45 +1,43 @@
 ﻿using Bookshop.Domain.Entities;
 using Bookshop.Domain.Interfaces.Repository;
 using Bookshop.Domain.Interfaces.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Bookshop.Domain.Services
 {
     public class BookService : IBookService
     {
-        private readonly IBookRepository _BookRepository;
+        private readonly IBookRepository _bookRepository;
 
         public BookService(IBookRepository bookRepository)
         {
-            _BookRepository = bookRepository;
+            _bookRepository = bookRepository;
         }
 
-        public void Add(Book _Book)
+        public void Add(Book book)
         {
-            _BookRepository.Add(_Book);
+            _bookRepository.Add(book);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return _BookRepository.GetAll().OrderBy(c => c.Title);
+            return _bookRepository.GetAll().OrderBy(c => c.Title);
         }
 
-        public Book GetByParams(Book _Book)
+        public Book GetByParams(Book book)
         {
-            return _BookRepository.GetByParams(_Book);
+            return _bookRepository.GetByParams(book);
         }
 
-        public int Remove(Book _Book)
+        public int Remove(Book book)
         {
-            return _BookRepository.Remove(_Book);
+            return _bookRepository.Remove(book);
         }
 
-        public Book Update(Book _Book)
+        public Book Update(Book book)
         {
-            return _BookRepository.Update(_Book);
+            return _bookRepository.Update(book);
         }
     }
 }

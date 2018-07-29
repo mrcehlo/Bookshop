@@ -1,8 +1,6 @@
 ﻿using Bookshop.Domain.Entities.Base;
 using Flunt.Validations;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bookshop.Domain.Entities
 {
@@ -22,21 +20,21 @@ namespace Bookshop.Domain.Entities
         public string BookShelfLocalization { get; private set; }
         public int Quantity { get; private set; }
 
-        public Book(string _ISBN,
-            string _Title,
-            string _Author,
-            string _Publisher,
-            decimal _Price,
-            string _BookShelfLocalization,
-            int _Quantity)
+        public Book(string isbn,
+            string title,
+            string author,
+            string publisher,
+            decimal price,
+            string bookShelfLocalization,
+            int quantity)
         {
-            ISBN = _ISBN;
-            Title = _Title;
-            Author = _Author;
-            Publisher = _Publisher;
-            Price = _Price;
-            BookShelfLocalization = _BookShelfLocalization;
-            Quantity = _Quantity;
+            ISBN = isbn;
+            Title = title;
+            Author = author;
+            Publisher = publisher;
+            Price = price;
+            BookShelfLocalization = bookShelfLocalization;
+            Quantity = quantity;
 
             var vMandatoryInfoText = "is a mandatory field.";
 

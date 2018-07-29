@@ -1,16 +1,14 @@
 ﻿using Bookshop.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Bookshop.Domain.Interfaces.Repository
 {
     public interface IBookRepository
     {
-        void Add(Book _Book);
-        Book Update(Book _Book);
-        int Remove(Book _Book);
+        void Add(Book book);
+        Book Update(Book book);
+        int Remove(Book book);
         IEnumerable<Book> GetAll();
-        Book GetByParams(Book _Book);
+        Book GetByParams(Book book);
     }
 }

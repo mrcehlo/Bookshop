@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using Bookshop.Domain.Entities;
 using Bookshop.Domain.Interfaces.Services;
 using Bookshop.Service.WebAPI.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookshop.Service.WebAPI.Controllers
 {
-    
+
     [Route("api/[controller]")]
     public class BooksController : Controller
     {
