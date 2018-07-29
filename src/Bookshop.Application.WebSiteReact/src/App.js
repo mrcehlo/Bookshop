@@ -44,7 +44,7 @@ class App extends Component {
           <div className="App">
             <Grid container justify="center" spacing={24}>
                 <Grid item xs={12}>
-                  <TopBar />
+                  <TopBar {... this.props}/>
                 </Grid>
             </Grid>
             <Routes />
