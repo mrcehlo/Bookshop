@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import TopBar from './components/TopBar';
 import Book from './components/Book';
 import {getAllBooks} from './libs/BookshopAPI';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Routes from "./Routes";
 
 class App extends Component {
@@ -23,7 +22,7 @@ class App extends Component {
 
   async componentDidMount() {
        try {
-        const books = this.returnBooks().then(books => this.setState({books}));
+        this.returnBooks().then(books => this.setState({books}));
 
        } catch (e) {
            alert(e);

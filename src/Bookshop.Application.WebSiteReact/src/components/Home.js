@@ -23,7 +23,7 @@ class Home extends Component {
 
   async componentDidMount() {
        try {
-        const books = this.returnBooks().then(books => this.setState({books}));
+        this.returnBooks().then(books => this.setState({books}));
 
        } catch (e) {
            alert(e);
