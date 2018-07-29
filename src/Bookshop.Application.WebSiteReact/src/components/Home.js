@@ -43,10 +43,7 @@ class Home extends Component {
     return (
       <Grid container justify="center" spacing={24}>
         <Grid item xs={5} sm={6} m={9}>
-          <p>
-            [work in progress]
-          </p>
-
+          
           {!this.state.isLoading && this.renderBookList(this.state.books)}
 
           <div className="buttonAddContainer">
@@ -54,6 +51,7 @@ class Home extends Component {
               <Link to="/books/new"> <AddIcon /> </Link>
             </Button>
           </div>
+
 
         </Grid>
       </Grid>

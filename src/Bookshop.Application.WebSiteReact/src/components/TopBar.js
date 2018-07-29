@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
+import './TopBar.css';
 
 
 
@@ -12,8 +13,8 @@ class TopBar extends Component {
 
   render() {
     return (
-      <div className="TopBar">
-        <AppBar position="static">
+      <div className="TopBar extendedTopBar">
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton className="homeButton" color="inherit" aria-label="Home">
               <Link to="/"> <HomeIcon /> </Link>

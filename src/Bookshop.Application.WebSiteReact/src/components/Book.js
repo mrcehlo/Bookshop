@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
+import './Book.css'
 
 class Book extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Book extends Component {
   render() {
     return (
       <div>
-       <Card className="card">
+       <Card className="card extendedCard">
          <CardContent>
            <Typography className="title" color="textSecondary">
              {this.state.author}
