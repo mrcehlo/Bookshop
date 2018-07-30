@@ -5,6 +5,7 @@ import {getAllBooks} from '../libs/BookshopAPI';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import "./Home.css";
+import ResponsiveDialog from "./ResponsiveDialog";
 
 class Home extends Component {
   constructor(props) {
@@ -23,9 +24,13 @@ class Home extends Component {
   async componentDidMount() {
        try {
         this.returnBooks().then(books => this.setState({books}));
-
-       } catch (e) {
-           alert(e);
+        } catch (err) {
+         if(err.response !== undefined && err.response.status === 400){
+           this.dialog.showDialog(err.response.data.messages)
+         }
+         else{
+           alert(err);
+         }
        }
        this.setState({ isLoading: false });
    }
@@ -44,8 +49,10 @@ class Home extends Component {
   render() {
     return (
       <Grid container justify="center" spacing={24}>
-        <Grid item xs={5} sm={6} m={9}>
 
+      <ResponsiveDialog ref={dialogInstance => { this.dialog = dialogInstance; }} />
+
+        <Grid item xs={5} sm={6} m={9}>
           {!this.state.isLoading && this.renderBookList(this.state.books)}
 
           <div className="buttonAddContainer">

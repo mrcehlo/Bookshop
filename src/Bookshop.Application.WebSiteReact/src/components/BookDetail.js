@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
-import './BookDetail.css'
+import './BookDetail.css';
+import ResponsiveDialog from "./ResponsiveDialog";
 
 const styles = theme => ({
   container: {
@@ -76,8 +77,13 @@ class BookDetail extends Component {
           this.setState({isNewBook: true, ...book});
         }
 
-       } catch (e) {
-           alert(e);
+      } catch (err) {
+         if(err.response !== undefined && err.response.status === 400){
+           this.dialog.showDialog(err.response.data.messages)
+         }
+         else{
+           alert(err);
+         }
        }
        this.setState({ isLoading: false });
    }
@@ -112,9 +118,14 @@ class BookDetail extends Component {
                this.props.history.push("/books");
            })
            .catch(err => {
-               this.setState({ isLoading: false });
-                   alert(err);
-           });
+             this.setState({ isLoading: false });
+             if(err.response !== undefined && err.response.status === 400){
+                this.dialog.showDialog(err.response.data.messages)
+             }
+             else{
+               alert(err);
+             }
+      });
    }
 
    handleDelete = async event => {
@@ -123,8 +134,13 @@ class BookDetail extends Component {
         try {
             await this.removeBook();
             this.props.history.push("/books");
-        } catch (e) {
-            alert(e);
+        } catch (err) {
+          if(err.response !== undefined && err.response.status === 400){
+            this.dialog.showDialog(err.response.data.messages)
+          }
+          else{
+            alert(err);
+          }
         }
     }
 
@@ -148,7 +164,7 @@ class BookDetail extends Component {
 
       <Grid container justify="center" spacing={24}>
         <Grid item xs={5} sm={6} m={9}>
-
+          <ResponsiveDialog ref={dialogInstance => { this.dialog = dialogInstance; }} />
           <form className={classes.container} onSubmit={this.handleSave} noValidate autoComplete="off">
             <TextField
               id="title"
