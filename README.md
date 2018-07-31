@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/f6pi6cwb28tt2tb3?svg=true)](https://ci.appveyor.com/project/mrcehlo/bookshop)
+
 # Bookshop
 
 Minimal bookshop management application.
